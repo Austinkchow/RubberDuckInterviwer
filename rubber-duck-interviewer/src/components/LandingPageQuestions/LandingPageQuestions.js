@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Question from '../Question/Question';
-import './QuestionContainer.css';
+
+import './LandingPageQuestions.css';
 
 class QuestionContainer extends Component {
     state = {
@@ -18,7 +18,7 @@ class QuestionContainer extends Component {
         return (
             <div className='questionContainer'>
                 <button onClick={this.previous}>Prev</button>
-                <Question question={this.state.questionSet[this.state.currentIndex]} />
+
                 <button onClick={this.next}>Next</button>
             </div>
 

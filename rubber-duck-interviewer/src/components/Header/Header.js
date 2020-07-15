@@ -1,17 +1,21 @@
 import React from "react"
+import './Header.sass'
+import { Link } from 'react-router-dom'
 
-import './Header.css'
-const Nav = (props) => {
+const Header = (props) => {
     return (
-        <nav className='nav' >
-            <h1>Rubber Duck Interviewer</h1>
-            <section className='right-menu'>
-                {props.loggedIn ? (
-                    <p>Hello, {props.user.name}</p>
-                ) : (<button>Login</button>)}
-            </section>
-        </nav>
-    )
+        <header className="topNav">
+            <div className="Title">
+                <Link to={'/'}>Rubber Duck Interviewer</Link>
+            </div>
+            <div className="myLinks">
+                <ul>
+                    <li><Link to={'/questionSets'}>Question Set Index</Link></li>
+                    <li><Link to={'/questionSets/new'}>Question Set New</Link></li>
+                </ul>
+            </div>
+        </header>
+    );
 }
 
-export default Nav
+export default Header

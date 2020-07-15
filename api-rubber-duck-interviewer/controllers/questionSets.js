@@ -19,7 +19,7 @@ const show = (req, res) => {
 }
 
 const create = (req, res) => {
-    db.QuestionSet.create(req.body, (err, saveQuestionSet) => {
+    db.QuestionSet.create({ ...req.body }, (err, saveQuestionSet) => {
         if (err) console.log('Error in questionSet#create:', err)
         res.status(201).json({ questionSet: saveQuestionSet });
     })

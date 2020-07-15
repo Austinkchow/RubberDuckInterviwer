@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
 
 const questionSetSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
     questions: [{
         type: String
     }],
     sharePermission: {
         type: Boolean,
-        required: true
+
     }
 })
 

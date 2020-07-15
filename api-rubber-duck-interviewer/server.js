@@ -24,13 +24,18 @@ app.use(
 );
 
 //middleware JSON parsing
-app.use(express.json())
+app.use(express.json());
 
-app.use(cors());
+const corsOption = {
+    origin: "http://localhost:3000",
+    credentials: true
+}
+
+app.use(cors(corsOption));
 
 //middleware - API routes
 app.use('/api/v1/questions', routes.questionSets)
-app.use('/api/v1/users', routes.users)
+app.use('/api/v1/auth', routes.users)
 
 //connection
 app.listen(PORT, () => {

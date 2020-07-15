@@ -2,6 +2,7 @@ const db = require('../models')
 const bcrypt = require('bcryptjs');
 
 const register = async (req, res) => {
+    console.log(req.body)
     try {
         const foundUser = await db.User.findOne({
             email: req.body.email,
@@ -15,8 +16,10 @@ const register = async (req, res) => {
         const hash = await bcrypt.hash(req.body.password, salt);
         req.body.password = hash;
         const newUser = await db.User.create(req.body);
+        console.log(newUser)
         res.status(200).json({ user: newUser })
     } catch (err) {
+        console.log(err)
         res.status(404).json({ message: err })
     }
 }
@@ -44,8 +47,17 @@ const logout = async (req, res) => {
     res.status(200).json({ message: 'destroy succeed' })
 }
 
+const findMyCollection = async (req, res) => {
+    db.User.findById(req.params.id, (err, foundUser) => {
+        if (err) console.log('Error in User#show:', err)
+        if (!foundQuestionSet) return res.json({ message: 'no user with ID found' });
+        res.status(200).json({ user: foundUser });
+    })
+}
+
 module.exports = {
     register,
     login,
-    logout
+    logout,
+    findMyCollection
 }
