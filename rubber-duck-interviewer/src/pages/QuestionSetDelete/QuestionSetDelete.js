@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import QuestionModel from '../../models/question';
 
-class updateQuestionSet extends Component {
+class deleteQuestionSet extends Component {
     state = {
         currentQuestionSet: this.props.match.params.id
     }
@@ -26,4 +26,4 @@ class updateQuestionSet extends Component {
     }
 }
 
-export default updateQuestionSet;
+export default deleteQuestionSet;
