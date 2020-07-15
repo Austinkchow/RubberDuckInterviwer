@@ -15,6 +15,7 @@ const Header = (props) => {
                     <li><Link to={'/user/register'}>Register</Link></li>
                     <li><Link to={'/user/login'}>Login</Link></li>
                     <li><Link to={'/user/logout'}>Logout</Link></li>
+                    <li><Link to={`/user/${props.currentUser}`}>Profile Page</Link></li>
                 </ul>
             </div>
         </header>

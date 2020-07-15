@@ -1,21 +1,32 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Routes from './config/routes'
 import './App.css'
 
-function App(props) {
+class App extends Component {
+  state = {
+    currentUser: '',
 
-  return (
-    <div className="App">
-      <Header
-      />
-      <Routes
-      />
-      <Footer />
-    </div>
-  );
+  }
+  storeUser = (userId) => {
+    this.setState({ currentUser: userId })
+  }
+  render() {
+    return (
+      <div className="App" >
+        <Header
+          currentUser={this.state.currentUser}
+        />
+        <Routes
+          storeUser={this.storeUser}
+          currentUser={this.state.currentUser}
+        />
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App 

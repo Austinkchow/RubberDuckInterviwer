@@ -16,6 +16,7 @@ export default class UserModel {
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: 'include',
             body: JSON.stringify(state)
         }).then(res => res.json())
             .catch(err => console.log(err))

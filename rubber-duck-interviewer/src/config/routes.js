@@ -10,8 +10,9 @@ import QuestionSetDelete from '../pages/QuestionSetDelete/QuestionSetDelete'
 import Register from '../pages/Register/Register'
 import Login from '../pages/Login/Login'
 import Logout from '../pages/Logout/Logout'
+import Profile from '../pages/Profile/Profile'
 
-const Routes = () => (
+const Routes = (props) => (
     <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/questionSets/new' component={QuestionSetNew} />
@@ -20,8 +21,15 @@ const Routes = () => (
         <Route path='/questionSets/:id' component={QuestionSetShow} />
         <Route path='/questionSets' component={QuestionSetIndex} />
         <Route path='/user/register' component={Register} />
-        <Route path='/user/login' component={Login} />
+        <Route path='/user/login' render={(routeComponentProps) => {
+            return <Login
+                {...routeComponentProps}
+                currentUser={props.currentUser}
+                storeUser={props.storeUser}
+            />
+        }} />
         <Route path='/user/logout' component={Logout} />
+        <Route path='/user/:id' component={Profile} />
     </Switch>
 );
 

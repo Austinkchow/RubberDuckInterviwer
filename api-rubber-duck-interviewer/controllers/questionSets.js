@@ -20,8 +20,18 @@ const show = (req, res) => {
 
 const create = (req, res) => {
     db.QuestionSet.create({ ...req.body }, (err, saveQuestionSet) => {
-        if (err) console.log('Error in questionSet#create:', err)
-        res.status(201).json({ questionSet: saveQuestionSet });
+        if (err) { console.log('Error in questionSet#create:', err) }
+        else {
+            db.User.findById(req.session.currentUser.id, function (err, foundAuthor) {
+                if (err) {
+                    console.log('Error in questionSet#create:', err)
+                } else {
+                    foundAuthor.questionSet.push(saveQuestionSet);
+                    foundAuthor.save();
+                    res.status(201).json({ questionSet: saveQuestionSet });
+                }
+            })
+        }
     })
 }
 
@@ -35,6 +45,15 @@ const addQuestion = (req, res) => {
     })
 }
 
+const deleteQuestion = (req, res) => {
+    db.QuestionSet.findById(req.params.id, (err, foundQuestionSet) => {
+        if (err) console.log('Error in questionSets#show:', err)
+        if (!foundQuestionSet) return res.json({ message: 'no question set with ID found' });
+        foundQuestionSet.questions.splice(req.body.index, 1);
+        foundQuestionSet.save()
+        res.status(200).json({ message: "Question added" })
+    })
+}
 
 const update = (req, res) => {
     db.QuestionSet.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedQuestionSet) => {
@@ -57,6 +76,7 @@ module.exports = {
     show,
     create,
     addQuestion,
+    deleteQuestion,
     update,
     destroy
 }

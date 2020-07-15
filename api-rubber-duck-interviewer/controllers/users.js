@@ -48,11 +48,13 @@ const logout = async (req, res) => {
 }
 
 const findMyCollection = async (req, res) => {
-    db.User.findById(req.params.id, (err, foundUser) => {
-        if (err) console.log('Error in User#show:', err)
-        if (!foundQuestionSet) return res.json({ message: 'no user with ID found' });
-        res.status(200).json({ user: foundUser });
-    })
+    try {
+        const foundUser = await db.User.findById(req.params.id).populate("questionSet")
+        res.status(200).json({ foundUser })
+    }
+    catch (err) {
+        res.status(404).json({ message: err })
+    }
 }
 
 module.exports = {

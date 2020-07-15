@@ -18,6 +18,7 @@ export default class QuestionModel {
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: 'include',
             body: JSON.stringify(questionSetData)
         }).then(res => res.json())
     }
