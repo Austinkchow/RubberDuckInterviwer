@@ -46,12 +46,14 @@ const addQuestion = (req, res) => {
 }
 
 const deleteQuestion = (req, res) => {
+    console.log(req.body)
     db.QuestionSet.findById(req.params.id, (err, foundQuestionSet) => {
         if (err) console.log('Error in questionSets#show:', err)
         if (!foundQuestionSet) return res.json({ message: 'no question set with ID found' });
         foundQuestionSet.questions.splice(req.body.index, 1);
+        console.log(foundQuestionSet.questions)
         foundQuestionSet.save()
-        res.status(200).json({ message: "Question added" })
+        res.status(200).json({ message: "Question deleted" })
     })
 }
 

@@ -6,7 +6,7 @@ router.get('/', ctrl.questionSets.index)
 router.get('/:id', ctrl.questionSets.show)
 router.post('/', ctrl.questionSets.create)
 router.post('/:id', ctrl.questionSets.addQuestion)
-router.post('/:id/deleteQuestion', ctrl.questionSets.deleteQuestion)
+router.delete('/:id/deleteQuestion', ctrl.questionSets.deleteQuestion)
 router.put('/:id', ctrl.questionSets.update)
 router.delete('/:id', ctrl.questionSets.destroy)
 

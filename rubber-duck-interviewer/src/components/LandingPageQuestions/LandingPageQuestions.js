@@ -4,24 +4,32 @@ import './LandingPageQuestions.css';
 
 class QuestionContainer extends Component {
     state = {
-        questionSet: ['question 1', 'question 2', 'question 3', 'question 4', 'question 5', 'question 6', 'question 7', 'question 8', 'question 9'],
         currentIndex: 0
     }
 
     next = () => {
-        this.setState({ currentIndex: this.state.currentIndex + 1 })
+        if (this.state.currentIndex >= 0 && this.state.currentIndex < this.props.questions.length - 1) {
+            this.setState({ currentIndex: this.state.currentIndex + 1 })
+        }
     };
     previous = () => {
-        this.setState({ currentIndex: this.state.currentIndex - 1 })
+        if (this.state.currentIndex > 0 && this.state.currentIndex < this.props.questions.length) {
+            this.setState({ currentIndex: this.state.currentIndex - 1 })
+        }
     };
     render() {
+        console.log(this.props)
         return (
-            <div className='questionContainer'>
-                <button onClick={this.previous}>Prev</button>
-
-                <button onClick={this.next}>Next</button>
-            </div>
-
+            <>
+                {this.props.questions.length > 0 &&
+                    <h3>{this.state.currentIndex + 1}/{this.props.questions.length}</h3>
+                }
+                <div className='questionContainer'>
+                    <button onClick={this.previous}>Prev</button>
+                    <h2>{this.props.questions[this.state.currentIndex]}</h2>
+                    <button onClick={this.next}>Next</button>
+                </div>
+            </>
         )
     }
 }

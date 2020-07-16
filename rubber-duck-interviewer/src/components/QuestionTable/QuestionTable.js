@@ -5,7 +5,9 @@ import './QuestionTable.sass';
 
 class QuestionTable extends Component {
     state = {
-        addedQuestion: ''
+        questions: this.props.questionSet.questions,
+        addedQuestion: '',
+        deleteQuestionIndex: 0
     }
 
     handleSubmit = (event) => {
@@ -13,12 +15,25 @@ class QuestionTable extends Component {
 
         QuestionModel.addQuestion(this.props.questionSet._id, { question: this.state.addedQuestion })
             .then(() => {
-                this.props.fetchData()
+                const newQuestions = [...this.state.questions]
+                newQuestions.push(this.state.addedQuestion)
                 this.setState({
+                    questions: newQuestions,
                     addedQuestion: ''
                 })
             })
     }
+    handleDelete = (index) => {
+        QuestionModel.deleteQuestion(this.props.questionSet._id, { index })
+            .then(() => {
+                const newQuestions = [...this.state.questions]
+                newQuestions.splice(index, 1)
+                this.setState({
+                    questions: newQuestions
+                })
+            })
+    }
+
     handleChange = (event) => {
         this.setState({
             addedQuestion: event.target.value
@@ -31,9 +46,10 @@ class QuestionTable extends Component {
             < div >
                 <div className="QuestionSetCard">
                     <h3>{this.props.questionSet.name}</h3>
-                    {this.props.questionSet.questions && this.props.questionSet.questions.map(question =>
+                    {this.state.questions && this.state.questions.map((question, index) =>
                         <div>
                             <h6>{question}</h6>
+                            <button onClick={() => this.handleDelete(index)}>Delete</button>
                         </div>
                     )}
                 </div>

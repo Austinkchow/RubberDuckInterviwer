@@ -57,9 +57,18 @@ const findMyCollection = async (req, res) => {
     }
 }
 
+const show = (req, res) => {
+    db.User.findById(req.params.id, (err, foundUser) => {
+        if (err) console.log('Error in user#show:', err)
+        if (!foundUser) return res.json({ message: 'no User set with ID found' });
+        res.status(200).json({ foundUser: foundUser });
+    })
+}
+
 module.exports = {
     register,
     login,
     logout,
-    findMyCollection
+    findMyCollection,
+    show
 }

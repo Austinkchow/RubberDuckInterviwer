@@ -3,7 +3,8 @@ import QuestionModel from '../../models/question';
 
 class NewQuestionSet extends Component {
     state = {
-        name: ''
+        name: '',
+        sharePermission: true
     }
 
     handleSubmit = (event) => {

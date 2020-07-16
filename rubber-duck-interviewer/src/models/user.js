@@ -30,4 +30,7 @@ export default class UserModel {
     static findMyCollection(userId) {
         return fetch(`${REACT_APP_API_URL}/auth/user/${userId}`).then(res => res.json())
     }
+    static show(userId) {
+        return fetch(`${REACT_APP_API_URL}/auth/user/${userId}/findUser`).then(res => res.json())
+    }
 }

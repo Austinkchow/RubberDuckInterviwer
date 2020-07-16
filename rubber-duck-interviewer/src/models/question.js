@@ -46,4 +46,14 @@ export default class QuestionModel {
             body: JSON.stringify(addedQuestion)
         }).then(res => res.json())
     }
+
+    static deleteQuestion(questionSetId, deleteQuestionIndex) {
+        return fetch(`${REACT_APP_API_URL}/questions/${questionSetId}/deleteQuestion`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(deleteQuestionIndex)
+        }).then(res => res.json())
+    }
 }
