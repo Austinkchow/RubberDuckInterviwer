@@ -1,6 +1,6 @@
 img {
   display: block;
-  margin: 5vh auto 2vh auto;
+  margin: 1vh auto 2vh auto;
   width: 80%;
   max-width: 600px;
 }
@@ -20,7 +20,8 @@ img {
   width: 80%;
   max-width: 500px;
   height: 2rem;
-  margin-top: 5%;
+  margin-top: 5rem;
   border-width: 0.2rem;
+  margin-bottom: 5rem;
 }
 /*# sourceMappingURL=Home.css.map */

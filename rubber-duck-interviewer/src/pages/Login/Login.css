@@ -21,7 +21,7 @@
 }
 
 .form .title {
-  margin-top: 10%;
+  margin-top: 2rem;
   text-align: center;
   font-size: 2rem;
 }
@@ -43,7 +43,7 @@
 }
 
 .form form .form-group {
-  padding-top: 5%;
+  padding-top: 2rem;
 }
 
 .form form .form-group label {
@@ -51,7 +51,7 @@
 }
 
 .form form button {
-  margin-top: 10%;
+  margin-top: 2rem;
   height: 2rem;
   width: 8rem;
 }
