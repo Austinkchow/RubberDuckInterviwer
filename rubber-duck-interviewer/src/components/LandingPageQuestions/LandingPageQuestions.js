@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './LandingPageQuestions.css';
+import './LandingPageQuestion.css';
 
 class QuestionContainer extends Component {
     state = {
@@ -21,12 +21,16 @@ class QuestionContainer extends Component {
         console.log(this.props)
         return (
             <>
-                {this.props.questions.length > 0 &&
-                    <h3>{this.state.currentIndex + 1}/{this.props.questions.length}</h3>
-                }
-                <div className='questionContainer'>
+                <div className='question_number'>
+                    {this.props.questions.length > 0 &&
+                        <h3>{this.state.currentIndex + 1}/{this.props.questions.length}</h3>
+                    }
+                </div>
+                <div className='question_container'>
                     <button onClick={this.previous}>Prev</button>
-                    <h2>{this.props.questions[this.state.currentIndex]}</h2>
+                    <div className='display_question'>
+                        <h2>{this.props.questions[this.state.currentIndex]}</h2>
+                    </div>
                     <button onClick={this.next}>Next</button>
                 </div>
             </>

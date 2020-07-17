@@ -13,11 +13,17 @@ class Logout extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Are you sure you want to Logout ?</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="submit" value="Yes" />
-                </form>
+            <div className='logout'>
+                <div className='form'>
+                    <div className='form_container'>
+                        <h2 className='title'>Logout ?</h2>
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="form-group">
+                                <button type="submit">Yes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-
 import { Link } from 'react-router-dom'
 import QuestionSetCard from '../../components/QuestionSetCard/QuestionSetCard'
 import QuestionModel from '../../models/question'
+
+import './QuestionSetIndex.css'
 
 class QuestionSetIndex extends Component {
     state = {
@@ -28,8 +29,8 @@ class QuestionSetIndex extends Component {
             )
         })
         return (
-            <div>
-                <h1>All QuestionSet</h1>
+            <div className='main'>
+                <h1>Interview Question Library</h1>
                 <div className='questionSetContainer'>
                     {this.state.questionSets ? QuestionSetIndex : 'Loading...'}
                 </div>

@@ -4,6 +4,8 @@ import QuestionModel from '../../models/question';
 import UserModel from '../../models/user'
 import QuestionTable from '../../components/QuestionTable/QuestionTable';
 
+import './QuestionSetShow.css'
+
 class QuestionSetShow extends Component {
     state = {
         currentQuestionSet: this.props.match.params.id,
@@ -30,12 +32,12 @@ class QuestionSetShow extends Component {
     render() {
         console.log(this.state.isAuthor)
         return (
-            <div>
+            <div className='show'>
                 <div>
                     <h2>{this.state.questionSet && this.state.questionSet.name}</h2>
                 </div>
-                {!this.state.isAuthor ?
-                    <div>
+                {this.state.isAuthor ?
+                    <div className='edit'>
                         {this.state.questionSet &&
                             <><Link to={`/questionSets/${this.state.currentQuestionSet}/edit`}>Question Set Edit</Link>
                                 <Link to={`/questionSets/${this.state.currentQuestionSet}/delete`}>Question Set Delete</Link></>

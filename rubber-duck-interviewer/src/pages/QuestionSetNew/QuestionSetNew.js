@@ -22,20 +22,25 @@ class NewQuestionSet extends Component {
     }
     render() {
         return (
-            <div>
-                <h2>New Interview Question Set</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label htmlFor="name">Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            onChange={this.handleChange}
-                            value={this.state.name}
-                        />
+            <div className='new'>
+                <div className='form'>
+                    <div className='form_container'>
+
+                        <h2 className='title'>Create Questions</h2>
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="form-group">
+                                <label htmlFor="name">Name</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    onChange={this.handleChange}
+                                    value={this.state.name}
+                                />
+                            </div>
+                            <button type="submit">Add</button>
+                        </form>
                     </div>
-                    <input type="submit" value="Add" />
-                </form>
+                </div>
             </div>
         )
     }

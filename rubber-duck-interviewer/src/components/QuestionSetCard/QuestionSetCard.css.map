@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,gBAAgB,CAAC;EACf,OAAO,EAAE,QAAQ;EACjB,SAAS,EAAE,IAAI;EACf,aAAa,EAAE,GAAG;EAClB,MAAM,EAAE,iBAAiB;CAAG",
+    "mappings": "AACA,AAAA,gBAAgB,CAAA;EACd,gBAAgB,ECCV,OAAO;EDAb,KAAK,ECHC,OAAO;EDIb,MAAM,EAAE,SAAS;EACjB,OAAO,EAAE,GAAG;EACZ,MAAM,EAAE,iBAAiB;EACzB,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,KAAK;CACjB",
     "sources": [
-        "QuestionSetCard.sass"
+        "QuestionSetCard.scss",
+        "../../styles/color.scss"
     ],
     "names": [],
     "file": "QuestionSetCard.css"

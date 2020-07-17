@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import QuestionModel from '../../models/question';
 import { withRouter } from 'react-router-dom'
-import './QuestionTable.sass';
+import './QuestionTable.css';
 
 class QuestionTable extends Component {
     state = {
@@ -43,27 +43,28 @@ class QuestionTable extends Component {
     render() {
         console.log(this.props)
         return (
-            < div >
-                <div className="QuestionSetCard">
-                    <h3>{this.props.questionSet.name}</h3>
+            < div className='QuestionTable'>
+                <div className='QuestionContainer'>
                     {this.state.questions && this.state.questions.map((question, index) =>
-                        <div>
+                        <div className="QuestionSetCard">
                             <h6>{question}</h6>
-                            <button onClick={() => this.handleDelete(index)}>Delete</button>
+                            {this.props.isAuthor ?
+                                <button onClick={() => this.handleDelete(index)}>Delete</button> : <div></div>}
                         </div>
                     )}
                 </div>
-                <div className="QuestionAdd">
-                    <form onSubmit={this.handleSubmit}>
-                        <label htmlFor="question">Add Question</label>
-                        <input
-                            type="text"
-                            name="question"
-                            onChange={this.handleChange}
-                            value={this.state.addedQuestion} />
-                        <input type="submit" value="Save!" />
-                    </form>
-                </div>
+                {this.props.isAuthor ?
+                    <div className="QuestionAdd">
+                        <form onSubmit={this.handleSubmit}>
+                            <label htmlFor="question">Add Question</label>
+                            <input
+                                type="text"
+                                name="question"
+                                onChange={this.handleChange}
+                                value={this.state.addedQuestion} />
+                            <input type="submit" value="Save!" />
+                        </form>
+                    </div> : <div></div>}
             </div >
         );
     }

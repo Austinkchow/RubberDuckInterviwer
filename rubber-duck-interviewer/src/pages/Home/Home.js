@@ -37,14 +37,16 @@ class Home extends Component {
             <div>
                 <QuestionContainer questions={this.state.selectedQuestionSet} />
                 <img src='/96-967025_duck-transparent-ducky-rubber-duck-transparent-background.png' alt='Rubber Duck img'></img>
-                <select onChange={this.onChange} name="questionSet">
-                    <option>Select Your Interview Questions</option>
-                    {this.state.questionSets.map(questionSet => {
-                        return (
-                            <option value={`${questionSet._id}`}>{`${questionSet.name}`}</option>
-                        )
-                    })}
-                </select>
+                <div className="select">
+                    <select onChange={this.onChange} name="questionSet" >
+                        <option>Select Your Interview Questions</option>
+                        {this.state.questionSets.map(questionSet => {
+                            return (
+                                <option value={`${questionSet._id}`}>{`${questionSet.name}`}</option>
+                            )
+                        })}
+                    </select>
+                </div>
             </div>
         );
     }

@@ -18,9 +18,14 @@ const Routes = (props) =>
     !props.currentUser ?
         <Switch>
             <Route exact path='/' component={Home} />
+            <Route path='/questionSets/:id' render={(routeComponentProps) => {
+                return <QuestionSetShow
+                    {...routeComponentProps}
+                    currentUser={props.currentUser}
+                />
+            }} />
             <Route path='/questionSets' component={QuestionSetIndex} />
             <Route path='/user/register' component={Register} />
-
             <Route path='/user/login' render={(routeComponentProps) => {
                 return <Login
                     {...routeComponentProps}

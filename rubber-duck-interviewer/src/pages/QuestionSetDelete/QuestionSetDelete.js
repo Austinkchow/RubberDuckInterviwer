@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import QuestionModel from '../../models/question';
-
+import './QuestionSetDelete.css'
 class deleteQuestionSet extends Component {
     state = {
         currentQuestionSet: this.props.match.params.id
@@ -16,12 +16,18 @@ class deleteQuestionSet extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Are you sure you want to delete ?</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="submit" value="Yes" />
-                </form>
-            </div>
+            <div className='delete'>
+                <div className='form'>
+                    <div className='form_container'>
+                        <h2 className='title'>Are you sure you want to delete ?</h2>
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="form-group">
+                                <button type="submit">Yes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div >
         )
     }
 }

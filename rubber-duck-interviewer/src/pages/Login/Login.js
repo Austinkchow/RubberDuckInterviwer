@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import UserModel from '../../models/user'
 import { withRouter } from 'react-router-dom'
+import './Login.css'
 
 class Login extends Component {
     state = {
@@ -32,31 +33,33 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <h4>Login</h4>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="name">Email</label>
-                        <input
-                            onChange={this.handleChange}
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={this.state.email} />
-                    </div>
+            <div className='form'>
+                <div className='form_container'>
+                    <h4 className='title'>Login</h4>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="name">Email</label>
+                            <input
+                                onChange={this.handleChange}
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={this.state.email} />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            onChange={this.handleChange}
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={this.state.password} />
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input
+                                onChange={this.handleChange}
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={this.state.password} />
 
-                    </div>
-                    <button type="submit">Login</button>
-                </form>
+                        </div>
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
             </div>
         );
     }
